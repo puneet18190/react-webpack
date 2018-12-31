@@ -6,6 +6,22 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+  devServer: {
+      contentBase: [
+        'src'
+      ],
+      host: '192.168.3.3',
+      port: '80',
+      open: true,
+      overlay: true,
+      watchOptions: {
+        // Delay the rebuild after the first change
+        aggregateTimeout: 300,
+
+        // Poll using interval (in ms, accepts boolean too)
+        poll: 1000,
+      },
+    },
   module: {
     rules: [
       {

@@ -1,3 +1,4 @@
+ref: https://survivejs.com/webpack/developing/webpack-dev-server/
 # Simple webpack boilerplate
 
 A ready to use simple webpack boilerplate.
