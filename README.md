@@ -1,4 +1,7 @@
 ref: https://survivejs.com/webpack/developing/webpack-dev-server/
+
+https://github.com/mschwarzmueller/reactjs-redux-basics
+
 # Simple webpack boilerplate
 
 A ready to use simple webpack boilerplate.
