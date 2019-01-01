@@ -10,8 +10,8 @@ module.exports = {
       contentBase: [
         'src'
       ],
-      host: '192.168.3.3',
-      port: '80',
+      host: '0.0.0.0',
+      port: '3000',
       open: true,
       overlay: true,
       watchOptions: {
