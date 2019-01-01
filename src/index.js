@@ -1,9 +1,10 @@
 import React from "react";
-import {createStore, combineReducers, applyMiddleware} from "redux";
-import logger from "redux-logger";
+// import {createStore, combineReducers, applyMiddleware} from "redux";
+// import logger from "redux-logger";
 import ReactDOM from "react-dom";
 import App from './components/app'
 import {Provider} from "react-redux";
+import store from './store';
 // import { User } from './components/user'
 // import { Main } from './components/main'
 
@@ -31,67 +32,71 @@ import {Provider} from "react-redux";
 // }
 
 // ReactDOM.render(<App />, document.getElementById("index"));
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>, document.getElementById("index"));
 
-const initalState1 = {
-	result: 1,
-	lastValues: []
-}
+// const initalState1 = {
+// 	result: 1,
+// 	lastValues: []
+// }
 
-const mathReducer = (state = initalState1, action) => {
-	switch(action.type){
-		case "ADD":
-			state = {
-				// ...state,
-				result: state.result + action.payload,
-				lastValues: [...state.lastValues, action.payload]
-			};
-			break;
-		case "SUB":
-			state = {
-				// ...state,
-				result: state.result - action.payload,
-				lastValues: [...state.lastValues, action.payload]
-			};
-			break;
-	}
-	return state;
-}
+// const mathReducer = (state = initalState1, action) => {
+// 	switch(action.type){
+// 		case "ADD":
+// 			state = {
+// 				// ...state,
+// 				result: state.result + action.payload,
+// 				lastValues: [...state.lastValues, action.payload]
+// 			};
+// 			break;
+// 		case "SUB":
+// 			state = {
+// 				// ...state,
+// 				result: state.result - action.payload,
+// 				lastValues: [...state.lastValues, action.payload]
+// 			};
+// 			break;
+// 	}
+// 	return state;
+// }
 
-const initalState2 = {
-	username: "max",
-	age: 25
-}
+// const initalState2 = {
+// 	username: "max",
+// 	age: 25
+// }
 
-const userReducer = (state = initalState2, action) => {
-	switch(action.type){
-		case "SET_NAME":
-			state = {
-				// ...state,
-				username: action.payload,
-				age: state.age
-			};
-			break;
-		case "SET_AGE":
-			state = {
-				// ...state,
-				username: state.username,
-				age: action.payload,
-			};
-			break;
-	}
-	return state;
-}
+// const userReducer = (state = initalState2, action) => {
+// 	switch(action.type){
+// 		case "SET_NAME":
+// 			state = {
+// 				// ...state,
+// 				username: action.payload,
+// 				age: state.age
+// 			};
+// 			break;
+// 		case "SET_AGE":
+// 			state = {
+// 				// ...state,
+// 				username: state.username,
+// 				age: action.payload,
+// 			};
+// 			break;
+// 	}
+// 	return state;
+// }
 
-const myLogger = (state) => (next) => (action) => {
-   // console.log("Logged Action: ", action);
-   next(action);
-};
+// const myLogger = (state) => (next) => (action) => {
+//    // console.log("Logged Action: ", action);
+//    next(action);
+// };
 
-const store = createStore(combineReducers({mathReducer, userReducer}), {}, applyMiddleware(myLogger, logger))
+// const store = createStore(combineReducers({mathReducer, userReducer}), {}, applyMiddleware(myLogger, logger))
 
-store.subscribe(() => {
-	// console.log("Store updated!", store.getState());
-})
+// store.subscribe(() => {
+// 	// console.log("Store updated!", store.getState());
+// })
 
 // store.dispatch({
 // 	type: "ADD",
@@ -123,7 +128,3 @@ store.subscribe(() => {
 // 	payload: 30
 // })
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>, document.getElementById("index"));
